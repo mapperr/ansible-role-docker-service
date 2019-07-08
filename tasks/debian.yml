@@ -1,0 +1,31 @@
+---
+# Docker installation on debian 9 stretch
+- name: Ensure required packages are installed
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+
+- name: Ensure docker apt repository key is present
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: Ensure docker apt repository is present
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    state: present
+
+- name: Ensure docker packages are installed
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - docker-ce
+      - docker-ce-cli
+      - docker-compose
+      - containerd.io

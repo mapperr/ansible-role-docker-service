@@ -1,0 +1,12 @@
+---
+- include: debian.yml
+  when: ansible_distribution == "Debian"
+  become: yes
+  tags:
+    - docker_host
+
+- include: ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+  become: yes
+  tags:
+    - docker_host

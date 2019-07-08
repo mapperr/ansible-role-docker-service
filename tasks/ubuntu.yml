@@ -1,0 +1,13 @@
+---
+# Docker installation on ubuntu
+- name: Ensure docker packages are installed
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - python-docker
+      - docker.io
